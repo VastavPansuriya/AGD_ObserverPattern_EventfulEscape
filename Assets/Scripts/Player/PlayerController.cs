@@ -35,6 +35,7 @@ public class PlayerController
     private void LightSwitchView_OnLightSwitch()
     {
        playerState = playerState == PlayerState.InDark? PlayerState.None : PlayerState.InDark;
+
     }
 
     public void Interact() => IsInteracted = Input.GetKeyDown(KeyCode.E) ? true : (Input.GetKeyUp(KeyCode.E) ? false : IsInteracted);
@@ -64,10 +65,7 @@ public class PlayerController
     public void KillPlayer()
     {
         PlayerState = PlayerState.Dead;
-        EventService.Instance.PlayerDeathEvent.InvokeEvent();
     }
-
-    private void OnLightsOffByGhost() => PlayerState = PlayerState.InDark;
 
     private void GetInput()
     {
@@ -84,8 +82,6 @@ public class PlayerController
         rotation = playerRigidbody.rotation * Quaternion.Euler(lookRotation);
         position = (transform.position) + (velocity * movement) * Time.fixedDeltaTime;
     }
-
-
     private void OnLightsToggled()
     {
         if (PlayerState == PlayerState.InDark)
