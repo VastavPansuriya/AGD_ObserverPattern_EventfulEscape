@@ -29,6 +29,17 @@ public class PlayerController
         playerState = PlayerState.InDark;
         EventService.Instance.LightsOffByGhostEvent.AddListener(OnLightsOffByGhost);
         EventService.Instance.LightSwitchToggleEvent.AddListener(OnLightsToggled);
+        LightSwitchView.OnLightSwitch += LightSwitchView_OnLightSwitch;
+    }
+
+    private void LightSwitchView_OnLightSwitch()
+    {
+       playerState = playerState == PlayerState.InDark? PlayerState.None : PlayerState.InDark;
+    }
+
+    ~PlayerController()
+    {
+        LightSwitchView.OnLightSwitch -= LightSwitchView_OnLightSwitch;
     }
 
     public void Interact() => IsInteracted = Input.GetKeyDown(KeyCode.E) ? true : (Input.GetKeyUp(KeyCode.E) ? false : IsInteracted);
