@@ -27,8 +27,6 @@ public class PlayerController
         this.playerScriptableObject.KeysEquipped = 0;
 
         playerState = PlayerState.InDark;
-        EventService.Instance.LightsOffByGhostEvent.AddListener(OnLightsOffByGhost);
-        EventService.Instance.LightSwitchToggleEvent.AddListener(OnLightsToggled);
         LightSwitchView.OnLightSwitch += LightSwitchView_OnLightSwitch;
     }
 
@@ -96,7 +94,5 @@ public class PlayerController
     ~PlayerController()
     {
         LightSwitchView.OnLightSwitch -= LightSwitchView_OnLightSwitch;
-        EventService.Instance.LightsOffByGhostEvent.RemoveListener(OnLightsOffByGhost);
-        EventService.Instance.LightSwitchToggleEvent.RemoveListener(OnLightsToggled);
     }
 }
