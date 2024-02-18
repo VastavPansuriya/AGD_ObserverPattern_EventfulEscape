@@ -6,7 +6,7 @@ public class LightsOffByGhostEvent : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,8 @@ public class LightsOffByGhostEvent : MonoBehaviour
         {
             EventService.Instance.OnLightsOffByGhostEvent.InvokeEvent();
             GameService.Instance.GetSoundView().PlaySoundEffects(SoundType.SpookyGiggle);
-           gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            enabled = false;
         }
     }
 }
