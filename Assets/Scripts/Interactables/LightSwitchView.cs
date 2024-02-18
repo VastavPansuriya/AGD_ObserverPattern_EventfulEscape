@@ -10,7 +10,7 @@ public class LightSwitchView : MonoBehaviour, IInteractable
 
     public delegate void LightSwitchDelegate();
 
-    public event LightSwitchDelegate OnLightSwitch;
+    public static event LightSwitchDelegate OnLightSwitch;
 
     private void OnEnable()
     {
