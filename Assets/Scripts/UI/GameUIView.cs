@@ -34,7 +34,6 @@ public class GameUIView : MonoBehaviour
     private void OnDisable()
     {
         EventService.Instance.OnRateRush.RemoveListener(SetRedVignette);
-
         EventService.Instance.OnKeyPickedUp.RemoveListener(OnKeyEquipped);
         EventService.Instance.OnLightsOffByGhostEvent.RemoveListener(SetRedVignette);
         EventService.Instance.OnPlayerEscapedEvent.RemoveListener(OnPlayerEscaped);
